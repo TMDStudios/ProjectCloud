@@ -6,3 +6,85 @@ body {
     font-size: 16px; 
     color: rgb(228, 228, 228);
 }
+h1 {
+	text-align: center;
+}
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(212, 212, 212, 0.1);
+}
+.nav_item {
+    float: left;
+}
+.nav_login {
+    float: right;
+}
+.nav_link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.nav_link:hover {
+	color: #F4F4F4;
+    background-color: #111;
+}
+.login-block {
+	padding: 24px;
+	width: 50%;
+	margin: auto;
+}
+.login-block div {	
+	margin: 12px;
+	width: 100%;
+}
+.login-block label {
+	font-size: 1.2rem;
+}
+.login-block input {
+	width: 96%;
+	padding: 8px;
+	font-size: 1.1rem;
+	border-radius: 8px;
+	border: 2px solid white;
+}
+.login-block .btn {
+	text-align: center;
+	width: 100%;
+	margin-top: 8px;
+	padding: 8px;
+	font-size: 1.1rem;
+	border-radius: 8px;
+	border: 2px solid rgb(8, 97, 201);
+	color: white;
+	background-color: rgb(8, 97, 201);
+	transition: 0.2s;
+}
+.login-block .red-btn {
+	text-align: center;
+	width: 100%;
+	margin-top: 8px;
+	padding: 8px;
+	font-size: 1.1rem;
+	border-radius: 8px;
+	border: 2px solid rgb(200, 0, 0);
+	color: white;
+	background-color: rgb(200, 0, 0);
+	transition: 0.2s;
+}
+.login-block .btn:hover {
+	cursor:pointer;
+    background-color: rgba(8, 97, 201, .5);
+}
+.login-block .red-btn:hover {
+	cursor:pointer;
+    background-color: rgba(200, 0, 0, .5);
+}
+.text-danger {
+	color: red;
+}
