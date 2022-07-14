@@ -10,4 +10,5 @@ import com.tmdstudios.projectcloud.models.Project;
 @Repository
 public interface ProjectRepo extends CrudRepository<Project, Long> {
 	List<Project> findAll();
+	Project findByIdIs(Long id);
 }

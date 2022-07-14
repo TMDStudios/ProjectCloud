@@ -1,6 +1,7 @@
 package com.tmdstudios.projectcloud.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,14 @@ public class ProjectService {
 	
 	public void deleteProject(Project project) {
 		projectRepo.delete(project);
+	}
+	
+	public Project findById(Long id) {
+		Optional<Project> optionalProject = projectRepo.findById(id);
+		if(optionalProject.isPresent()) {
+			return optionalProject.get();
+		}else {
+			return null;
+		}
 	}
 }

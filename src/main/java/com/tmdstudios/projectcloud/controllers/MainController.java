@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -99,6 +100,27 @@ public class MainController {
 	@RequestMapping(value="/home", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home(HttpSession session, Model model) {
 		return "home.jsp";
+	}
+	
+	@RequestMapping(value="/projects", method = { RequestMethod.GET, RequestMethod.POST })
+	public String projects(HttpSession session, Model model) {
+		return "projects.jsp";
+	}
+	
+	@RequestMapping(value="/projects/new", method = { RequestMethod.GET, RequestMethod.POST })
+	public String newProject(HttpSession session, Model model) {
+		return "new_project.jsp";
+	}
+	
+	@GetMapping("/projects/{id}")
+	public String viewProject(HttpSession session, Model model, @PathVariable("id") Long id) {
+		model.addAttribute("project", projectService.findById(id));
+		return "project_details.jsp";
+	}
+	
+	@RequestMapping(value="/my-projects", method = { RequestMethod.GET, RequestMethod.POST })
+	public String myProjects(HttpSession session, Model model) {
+		return "my_projects.jsp";
 	}
 
 }

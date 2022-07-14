@@ -18,6 +18,6 @@ if(document.getElementById("cloud-img")!==null){
 		},
 		method: "POST"
 	})
-	.then(response => document.getElementById("cloud-img").src = response.url+"?text=Welcome to Project Cloud!")
+	.then(response => document.getElementById("cloud-img").src = response.url+"?text=Welcome to Project Cloud")
 	.catch(err => console.error(err));
 }
