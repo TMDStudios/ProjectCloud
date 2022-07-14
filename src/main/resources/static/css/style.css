@@ -88,3 +88,23 @@ h1 {
 .text-danger {
 	color: red;
 }
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	display: table;
+}
+tr {
+	height: 48px;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+th {
+	border-bottom: 1px solid #ced7dd;
+	border-top: 1px solid #ced7dd;
+}
+td {
+	padding: 16px;
+	display: table-cell;
+	text-align: center;
+	border-bottom: 1px solid #ced7dd;
+}

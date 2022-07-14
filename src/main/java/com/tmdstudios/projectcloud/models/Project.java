@@ -70,17 +70,30 @@ public class Project {
     @JsonManagedReference
     private List<Comment> comments;
     
-    @Column(updatable=false)
-    @OneToMany(mappedBy="project", fetch=FetchType.LAZY)
-    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(
+			name = "languages_projects",
+			joinColumns = @JoinColumn(name = "project_id"),
+			inverseJoinColumns = @JoinColumn(name = "language_id")
+	)
     private List<Language> languages;
     
-    @Column(updatable=false)
-    @OneToMany(mappedBy="project", fetch=FetchType.LAZY)
-    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(
+			name = "tags_projects",
+			joinColumns = @JoinColumn(name = "project_id"),
+			inverseJoinColumns = @JoinColumn(name = "tag_id")
+	)
     private List<Tag> tags;
     
     public Project() {}
+    
+    public Project(String name, String summary, String description, User creator) {
+    	this.name = name;
+    	this.summary = summary;
+    	this.description = description;
+    	this.creator = creator;
+    }
 
 	public Long getId() {
 		return id;

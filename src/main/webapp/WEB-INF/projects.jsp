@@ -26,6 +26,36 @@
 </ul>
 
 <h3>Projects</h3>
+<table>
+    <thead> 
+    	<tr>
+    		<th>Project Name</th>
+    		<th>Creator</th>
+    		<th>Languages</th>
+    		<th>Tags</th>
+    		<th>Contributors</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	<c:forEach var="project" items="${projects}">
+		<tr>
+		    <td><a href="/projects/${project.id}">${project.name}</a></td>
+		    <td>${project.creator.username}</td>
+		    <td>
+		    	<c:forEach var="language" items="${project.languages}">
+		    		<button type="button">${language.name}</button>
+		    	</c:forEach>
+		    </td>
+		    <td>
+		    	<c:forEach var="tag" items="${project.tags}">
+		    		<button type="button">${tag.name}</button>
+		    	</c:forEach>
+		    </td>
+		    <td>${project.contributors.size()}</td>
+		</tr>	
+		</c:forEach>
+    </tbody>
+</table>
 
 <script type="text/javascript" src="../js/app.js"></script>
 

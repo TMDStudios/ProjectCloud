@@ -1,7 +1,9 @@
 package com.tmdstudios.projectcloud.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,14 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="languages")
@@ -37,12 +38,19 @@ public class Language {
         this.createdAt = new Date();
     }
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JsonBackReference
-    @JoinColumn(name="project_language_id")
-    private Project project;
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(
+			name = "languages_projects",
+			joinColumns = @JoinColumn(name = "language_id"),
+			inverseJoinColumns = @JoinColumn(name = "project_id")
+	)
+    private List<Project> projects;
     
     public Language() {}
+    
+    public Language(String name) {
+    	this.name = name;
+    }
 
 	public Long getId() {
 		return id;
@@ -68,11 +76,12 @@ public class Language {
 		this.createdAt = createdAt;
 	}
 
-	public Project getProject() {
-		return project;
+	public List<Project> getProjects() {
+		return projects;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
+
 }

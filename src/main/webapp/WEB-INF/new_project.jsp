@@ -27,6 +27,51 @@
 
 <h3>New Project</h3>
 
+<form:form action="/projects/new" method="post" modelAttribute="project">
+	<input type="hidden" id="creator" name="creator" value="${userId}">
+
+	<table>
+	    <thead>
+	    	<tr>
+	            <td class="float-left">Project Name:</td>
+	            <td class="float-left">
+	            	<form:errors path="name" class="text-danger"/>
+					<form:input class="input" path="name"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="float-left">Project Summary:</td>
+	             <td class="float-left">
+	            	<form:errors path="summary" class="text-danger"/>
+					<form:input rows="4" class="input" path="summary"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="float-left">Project Description:</td>
+	             <td class="float-left">
+	            	<form:errors path="description" class="text-danger"/>
+					<form:input rows="8" class="input" path="description"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="float-left">Languages:</td>
+	            <td class="float-left">
+					<input class="input" name="listOfLanguages" id="listOfLanguages"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="float-left">Tags (Example: game, match_3, puzzle):</td>
+	            <td class="float-left">
+					<input class="input" name="listOfTags" id="listOfTags"/>
+	            </td>
+	        </tr>
+	        <tr>
+	        	<td colspan=2><input class="input" class="button" type="submit" value="Submit"/></td>
+	        </tr>
+	    </thead>
+	</table>
+</form:form>
+
 <script type="text/javascript" src="../js/app.js"></script>
 
 </body>
