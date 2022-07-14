@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tmdstudios.projectcloud.models.Cloud;
 import com.tmdstudios.projectcloud.models.Language;
 import com.tmdstudios.projectcloud.models.LoginUser;
 import com.tmdstudios.projectcloud.models.Project;
 import com.tmdstudios.projectcloud.models.Tag;
 import com.tmdstudios.projectcloud.models.User;
+import com.tmdstudios.projectcloud.services.CloudService;
 import com.tmdstudios.projectcloud.services.CommentService;
 import com.tmdstudios.projectcloud.services.LanguageService;
 import com.tmdstudios.projectcloud.services.ProjectService;
@@ -46,6 +48,9 @@ public class MainController {
 	
 	@Autowired
 	private TagService tagService;
+	
+	@Autowired
+	private CloudService cloudService;
 	
 	@GetMapping("/")
 	public String index(Model model, HttpSession session) {
@@ -106,6 +111,7 @@ public class MainController {
 	
 	@RequestMapping(value="/home", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home(HttpSession session, Model model) {
+		model.addAttribute("cloud", tagService.allTags());
 		return "home.jsp";
 	}
 	
@@ -173,6 +179,7 @@ public class MainController {
 		
 		for(String s: splitTags) {
 			s = s.trim().toLowerCase();
+			cloudService.addCloudWord(new Cloud(s));
 			if(tagService.findByName(s)==null && s.length()>0) {
 				tempTags.add(new Tag(s));
 			}else {

@@ -9,15 +9,37 @@ const cloud = {
     "text": "Welcome to Project Cloud!"
 }
 
-if(document.getElementById("cloud-img")!==null){
-	fetch("https://quickchart.io/wordcloud", {
-		body: JSON.stringify(cloud),
-		headers: {
-			"dataType": "json",
-			"content-type": "application/json"
-		},
-		method: "POST"
-	})
-	.then(response => document.getElementById("cloud-img").src = response.url+"?text=Welcome to Project Cloud")
-	.catch(err => console.error(err));
+function updateCloud(wordCloud) {
+	if(document.getElementById("cloud-img")!==null){
+		fetch("https://quickchart.io/wordcloud", {
+			body: JSON.stringify(cloud),
+			headers: {
+				"dataType": "json",
+				"content-type": "application/json"
+			},
+			method: "POST"
+		})
+		.then(response => document.getElementById("cloud-img").src = response.url+"?text="+wordCloud)
+		.catch(err => console.error(err));
+	}
 }
+
+function getCloudWords() {
+  	let req = new XMLHttpRequest();
+	req.open('GET', "/api/cloud");
+  	req.onload = function() {
+    	if (req.status == 200) {
+			var cloudWords = "";
+			const jsonData = JSON.parse(this.responseText);
+			for (var i = 0; i < jsonData.length; i++) {
+				cloudWords += jsonData[i].name + " ";
+			}
+			updateCloud(cloudWords);
+    	} else {
+      		myCallback("Error: " + req.status);
+    	}
+  	}
+  	req.send();
+}
+
+getCloudWords();
