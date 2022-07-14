@@ -13,8 +13,10 @@
 
 <ul class="navbar">
     <li class="nav_item"><a class="nav_link" href="/home">Home</a></li>
-    <li class="nav_item"><a class="nav_link" href="/cloud">View Project Cloud</a></li>
+    <li class="nav_item"><a class="nav_link" href="/projects">View Projects</a></li>
     <c:if test="${userId!=null}">
+    	<li class="nav_item"><a class="nav_link" href="/projects/new">Propose New Project</a></li>
+		<li class="nav_item"><a class="nav_link" href="/my-projects">My Projects</a></li>
     	<li class="nav_login"><a class="nav_link" href="/logout">Log Out</a></li>
 	</c:if>
 	<c:if test="${userId==null}">

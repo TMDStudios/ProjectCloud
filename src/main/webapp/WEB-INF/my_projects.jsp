@@ -7,7 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<title>Home</title>
+<title>My Projects</title>
 </head>
 <body>
 
@@ -25,10 +25,7 @@
 	</c:if>    
 </ul>
 
-<div>
-	<img id="cloud-img"/>
-</div>
-<small>Word Cloud provided by <a href="https://quickchart.io/">quickchart.io</a></small>
+<h3>My Projects</h3>
 
 <script type="text/javascript" src="../js/app.js"></script>
 
