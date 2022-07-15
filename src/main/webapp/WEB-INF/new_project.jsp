@@ -43,14 +43,14 @@
 	            <td class="float-left">Project Summary:</td>
 	             <td class="float-left">
 	            	<form:errors path="summary" class="text-danger"/>
-					<form:input rows="4" class="input" path="summary"/>
+					<form:textarea rows="4" class="input" path="summary"/>
 	            </td>
 	        </tr>
 	        <tr>
 	            <td class="float-left">Project Description:</td>
 	             <td class="float-left">
 	            	<form:errors path="description" class="text-danger"/>
-					<form:input rows="8" class="input" path="description"/>
+					<form:textarea rows="8" class="input" path="description"/>
 	            </td>
 	        </tr>
 	        <tr>

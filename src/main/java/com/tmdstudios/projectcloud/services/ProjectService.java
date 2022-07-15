@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tmdstudios.projectcloud.models.Project;
+import com.tmdstudios.projectcloud.models.User;
 import com.tmdstudios.projectcloud.repositories.ProjectRepo;
 
 @Service
@@ -37,5 +38,9 @@ public class ProjectService {
 		}else {
 			return null;
 		}
+	}
+	
+	public List<Project> findByContributor(User contributor) {
+		return projectRepo.findAllByContributors(contributor);
 	}
 }

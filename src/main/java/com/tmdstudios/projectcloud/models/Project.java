@@ -1,5 +1,6 @@
 package com.tmdstudios.projectcloud.models;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class Project {
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
+        this.contributors = Arrays.asList(this.creator);
     }
     
     @ManyToOne(fetch=FetchType.LAZY)

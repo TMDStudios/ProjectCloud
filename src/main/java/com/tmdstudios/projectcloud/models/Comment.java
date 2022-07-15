@@ -50,6 +50,11 @@ public class Comment {
     private Project project;
     
     public Comment() {}
+    
+    public Comment(String text, Project project) {
+    	this.text = text;
+    	this.project = project;
+    }
 
 	public Long getId() {
 		return id;

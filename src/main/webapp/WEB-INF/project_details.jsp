@@ -26,6 +26,40 @@
 </ul>
 
 <h3>Project Details</h3>
+<p>Project Name: ${project.name}</p>
+<p>Creator: ${project.creator.username}</p>
+<p>Summary: ${project.summary}</p>
+<p>Description: ${project.description}</p>
+<p>Contributors: ${project.contributors.size()}</p>
+<ul>
+	<c:forEach var="contributor" items="${project.contributors}">
+	    <li>${contributor.username}</li>
+	</c:forEach>
+</ul>
+<hr>
+<iframe src="/comments/${id}" title="Activities Iframe"></iframe>
+<br>
+<h3>New Comment:</h3>
+<form:form action="/project/${id}/comment" method="post" modelAttribute="comment">
+	<input type="hidden" id="project" name="project" value="${project.id}">
+	<table>
+	    <thead>
+	        <tr>
+	            <td class="float-left">Comment:</td>
+	            <td class="float-left">
+	            	<form:errors path="text" class="text-danger"/>
+					<form:input class="input" path="text"/>
+	            </td>
+	        </tr>
+	        <tr>
+	        	<td colspan=2><input class="input" class="button" type="submit" value="Submit"/></td>
+	        </tr>
+	    </thead>
+	</table>
+</form:form>
+
+<hr>
+<p><a href="/project/${id}/add">Join/Leave</a></p>
 
 <script type="text/javascript" src="../js/app.js"></script>
 

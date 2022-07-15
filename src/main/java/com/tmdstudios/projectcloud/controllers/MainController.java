@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tmdstudios.projectcloud.models.Cloud;
+import com.tmdstudios.projectcloud.models.Comment;
 import com.tmdstudios.projectcloud.models.Language;
 import com.tmdstudios.projectcloud.models.LoginUser;
 import com.tmdstudios.projectcloud.models.Project;
@@ -207,12 +208,56 @@ public class MainController {
 	}
 	
 	@GetMapping("/projects/{id}")
-	public String viewProject(HttpSession session, Model model, @PathVariable("id") Long id) {
+	public String viewProject(HttpSession session, Model model, @PathVariable("id") Long id, @ModelAttribute("comment") Comment comment) {
 		model.addAttribute("project", projectService.findById(id));
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/logout";
 		}
 		return "project_details.jsp";
+	}
+	
+	@GetMapping("/comments/{id}")
+	public String comments(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("project", projectService.findById(id));
+		return "comments.jsp";
+	}
+	
+	@PostMapping("/project/{id}/comment")
+	public String addComment(
+			@PathVariable("id") Long id, 
+			@Valid @ModelAttribute("comment") Comment comment,
+			BindingResult result, 
+			HttpSession session, 
+			Model model) {
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/logout";
+		}
+		Long userId = (Long) session.getAttribute("userId");
+		User user = userService.findById(userId);
+		Comment newComment = new Comment(comment.getText(), comment.getProject());
+		newComment.setUser(user);
+		commentService.addComment(newComment);
+		return "redirect:/projects/"+id;
+	}
+	
+	@RequestMapping("/project/{id}/add")
+	public String addToMyProjects(
+			@PathVariable("id") Long id, 
+			HttpSession session, 
+			Model model) {
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/logout";
+		}
+		Long userId = (Long) session.getAttribute("userId");
+		User user = userService.findById(userId);
+		Project project = projectService.findById(id);
+		if(project.getContributors().contains(user)) {
+			project.getContributors().remove(user);
+		}else {
+			project.getContributors().add(user);		
+		}
+		projectService.updateProject(project);
+		return "redirect:/projects/"+id;
 	}
 	
 	@GetMapping("/projects/{id}/edit")
@@ -243,6 +288,9 @@ public class MainController {
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/logout";
 		}
+		Long userId = (Long) session.getAttribute("userId");
+		User user = userService.findById(userId);
+		model.addAttribute("projects", projectService.findByContributor(user));
 		return "my_projects.jsp";
 	}
 

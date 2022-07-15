@@ -34,6 +34,9 @@ function getCloudWords() {
 			for (var i = 0; i < jsonData.length; i++) {
 				cloudWords += jsonData[i].name + " ";
 			}
+			if(cloudWords.length<3){
+				cloudWords = "Welcome to Project Cloud"
+			}
 			updateCloud(cloudWords);
     	} else {
       		myCallback("Error: " + req.status);

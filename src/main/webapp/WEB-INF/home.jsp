@@ -25,10 +25,10 @@
 	</c:if>    
 </ul>
 
-<div>
+<div class="cloud-container">
 	<img id="cloud-img"/>
+	<p><small>Word Cloud provided by <a href="https://quickchart.io/">quickchart.io</a></small></p>
 </div>
-<small>Word Cloud provided by <a href="https://quickchart.io/">quickchart.io</a></small>
 
 <script type="text/javascript" src="../js/app.js"></script>
 
