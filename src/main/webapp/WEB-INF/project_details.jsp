@@ -39,6 +39,7 @@
 <hr>
 <iframe src="/comments/${id}" title="Activities Iframe"></iframe>
 <br>
+<p class="text-danger">${error}</p>
 <h3>New Comment:</h3>
 <form:form action="/project/${id}/comment" method="post" modelAttribute="comment">
 	<input type="hidden" id="project" name="project" value="${project.id}">
@@ -60,6 +61,9 @@
 
 <hr>
 <p><a href="/project/${id}/add">Join/Leave</a></p>
+<c:if test="${project.creator.id==userId}">
+	<p><a class="nav_link" href="/projects/${id}/edit">Edit Project</a></p>
+</c:if>  
 
 <script type="text/javascript" src="../js/app.js"></script>
 

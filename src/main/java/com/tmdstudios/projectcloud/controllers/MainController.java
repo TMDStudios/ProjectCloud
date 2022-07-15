@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tmdstudios.projectcloud.models.Cloud;
 import com.tmdstudios.projectcloud.models.Comment;
@@ -228,9 +229,14 @@ public class MainController {
 			@Valid @ModelAttribute("comment") Comment comment,
 			BindingResult result, 
 			HttpSession session, 
-			Model model) {
+			Model model,
+			RedirectAttributes redirectAttributes) {
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/logout";
+		}
+		if(comment.getText().length()<5) {
+			redirectAttributes.addFlashAttribute("error", "Your comment must be 5 characters or longer");
+			return "redirect:/projects/"+id;
 		}
 		Long userId = (Long) session.getAttribute("userId");
 		User user = userService.findById(userId);
@@ -273,14 +279,31 @@ public class MainController {
 	public String updateProject(
 			@Valid @ModelAttribute("project") Project project,
 			BindingResult result,
+			@RequestParam(value="listOfTags") String listOfTags,
+			@RequestParam(value="listOfLanguages") String listOfLanguages,
 			HttpSession session, 
 			Model model, 
 			@PathVariable("id") Long id) {
-		model.addAttribute("project", projectService.findById(id));
+		Project currentProject = projectService.findById(id);
+		model.addAttribute("project", currentProject);
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/logout";
 		}
-		return "edit_project.jsp";
+		List<Tag> tags = tagService.allTags();
+		model.addAttribute("tags", tags);
+		List<Language> languages = languageService.allLanguages();
+		model.addAttribute("languages", languages);
+		if(result.hasErrors()) {
+			return "edit_project.jsp";
+		}else {
+			List<Tag> projectTags = checkTags(listOfTags);
+			List<Language> projectLanguages = checkLanguages(listOfLanguages);
+			project.setTags(projectTags);
+			project.setLanguages(projectLanguages);
+			project.setContributors(currentProject.getContributors());
+			projectService.updateProject(project);
+			return "redirect:/projects/"+id;
+		}
 	}
 	
 	@GetMapping("/my-projects")
