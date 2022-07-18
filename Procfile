@@ -1,0 +1,1 @@
+web java -Dserver.port=$PORT -jar target/ProjectCloud-0.0.1-SNAPSHOT.war
