@@ -26,6 +26,10 @@
 </ul>
 
 <div class="cloud-container">
+	<div id="fetching-cloud">
+		<h3>Welcome to Project Cloud!</h3>
+		<p>Fetching Word Cloud...</p>
+	</div>
 	<img id="cloud-img"/>
 	<p><small>Word Cloud provided by <a href="https://quickchart.io/">quickchart.io</a></small></p>
 </div>

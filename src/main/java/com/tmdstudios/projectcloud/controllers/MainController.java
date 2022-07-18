@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -182,10 +183,14 @@ public class MainController {
 		for(String s: splitTags) {
 			s = s.trim().toLowerCase();
 			cloudService.addCloudWord(new Cloud(s));
-			if(tagService.findByName(s)==null && s.length()>0) {
-				tempTags.add(new Tag(s));
-			}else {
-				tempTags.add(tagService.findByName(s));
+			try {
+				if(tagService.findByName(s)==null && s.length()>0) {
+					tempTags.add(new Tag(s));
+				}else {
+					tempTags.add(tagService.findByName(s));
+				}
+			}catch(IncorrectResultSizeDataAccessException e) {
+//				System.out.println("ISSUE: "+e);
 			}
 		}
 		
@@ -198,10 +203,14 @@ public class MainController {
 		
 		for(String s: splitLanguages) {
 			s = s.trim().toLowerCase();
-			if(languageService.findByName(s)==null && s.length()>0) {
-				tempLanguages.add(new Language(s));
-			}else {
-				tempLanguages.add(languageService.findByName(s));
+			try {
+				if(languageService.findByName(s)==null && s.length()>0) {
+					tempLanguages.add(new Language(s));
+				}else {
+					tempLanguages.add(languageService.findByName(s));
+				}
+			}catch(IncorrectResultSizeDataAccessException e) {
+//				System.out.println("ISSUE: "+e);
 			}
 		}
 		

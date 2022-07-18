@@ -19,9 +19,18 @@ function updateCloud(wordCloud) {
 			},
 			method: "POST"
 		})
-		.then(response => document.getElementById("cloud-img").src = response.url+"?text="+wordCloud)
+		.then(response => {
+			const loadingMessageDiv = document.getElementById("fetching-cloud");
+			removeChildren(loadingMessageDiv);
+			document.getElementById("cloud-img").src = response.url+"?text="+wordCloud;})
 		.catch(err => console.error(err));
 	}
+}
+
+const removeChildren = (parent) => {
+    while(parent.lastChild){
+        parent.removeChild(parent.lastChild);
+    }
 }
 
 function getCloudWords() {

@@ -36,7 +36,7 @@
 	    <li>${contributor.username}</li>
 	</c:forEach>
 </ul>
-<hr>
+
 <iframe src="/comments/${id}" title="Activities Iframe"></iframe>
 <br>
 <p class="text-danger">${error}</p>
@@ -59,7 +59,7 @@
 	</table>
 </form:form>
 
-<hr>
+
 <p><a href="/project/${id}/add">Join/Leave</a></p>
 <c:if test="${project.creator.id==userId}">
 	<p><a class="nav_link" href="/projects/${id}/edit">Edit Project</a></p>
