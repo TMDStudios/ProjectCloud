@@ -25,7 +25,7 @@
 	</c:if>    
 </ul>
 
-<h3>Projects</h3>
+<h3>Projetcs</h3>
 <table>
     <thead> 
     	<tr>
