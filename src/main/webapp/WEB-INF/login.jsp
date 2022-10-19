@@ -8,6 +8,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <title>Log In</title>
+<!-- Favicon -->
+<link rel="icon" href="../../resources/static/img/favicon.ico">
 </head>
 <body>
 
