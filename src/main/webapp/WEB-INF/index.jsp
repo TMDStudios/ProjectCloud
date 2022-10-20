@@ -8,6 +8,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <title>Project Cloud</title>
+<link rel="icon" type="image/x-icon" href="../../resources/static/img/favicon.ico">
 </head>
 <body>
 
