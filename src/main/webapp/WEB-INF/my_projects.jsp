@@ -8,6 +8,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <title>My Projects</title>
+<link rel="shortcut icon" href="favicon.ico?" type="image/x-icon" />
 </head>
 <body>
 
