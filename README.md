@@ -4,7 +4,7 @@
 
 Project Cloud aims to help users generate project ideas for their portfolio and to encourage collaboration
 
-The website is available here: https://open-project-cloud.herokuapp.com/
+The website is available here: https://project-cloud-prod-project-cloud-ek472e.mo5.mogenius.io/
 
 Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
 
