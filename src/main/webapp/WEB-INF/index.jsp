@@ -22,7 +22,10 @@
 	</c:if>
 	<c:if test="${userId==null}">
 		<li class="nav_item"><a class="nav_link" href="/login">Log In</a></li>
-		<li class="nav_login"><a class="nav_link" href="/register">Register</a></li>
+		<div style="display: flex; justify-content: end; align-items: center;">
+			<img src="img/userIcon.png" alt="userIcon" width="30px">
+			<li class="nav_login"><a class="nav_link" href="/register">Register</a></li>
+		</div>
 	</c:if>    
 </ul>
 
