@@ -1,11 +1,12 @@
 body {
-	max-width: 1080px;
-	margin: auto;
-	background: #000000; 
+    max-width: 1080px;
+    margin: 0 auto;
+    background: #000000; 
     font-family: 'Lato', helvetica, arial, sans-serif; 
     font-size: 16px; 
     color: rgb(228, 228, 228);
 }
+
 h1 {
 	text-align: center;
 }
@@ -37,7 +38,7 @@ h1 {
 .login-block {
 	padding: 24px;
 	width: 50%;
-	margin: auto;
+	margin: 0 auto;
 }
 .login-block div {	
 	margin: 12px;
