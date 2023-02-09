@@ -9,3 +9,6 @@ The website is available here: https://project-cloud-prod-project-cloud-ek472e.m
 Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
 
 > Note: Project Cloud makes use of a free tier Mogenius hosting plan. This can make load times slow and limit database access.
+
+
+Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
