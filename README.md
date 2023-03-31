@@ -4,7 +4,7 @@
 
 Project Cloud aims to help users generate project ideas for their portfolio and to encourage collaboration
 
-The website is available here: https://project-cloud-prod-project-cloud-ek472e.mo5.mogenius.io/
+The website is available here: https://projectcloud.up.railway.app/
 
 Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
 
