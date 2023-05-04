@@ -9,3 +9,6 @@ The website is available here: https://projectcloud.up.railway.app/
 Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
 
 > Note: Project Cloud makes use of a free-tier Railway hosting plan. This can make load times slow and limit database access. The uptime is also limited to the first 21 days each month.
+
+Contribution Guide: https://github.com/krys-t-ninja/ProjectCloud/commit/1c1b65d52c198e03021490df8fd224dfabd8b409
+> Note: This is my first time committing on Github. 
