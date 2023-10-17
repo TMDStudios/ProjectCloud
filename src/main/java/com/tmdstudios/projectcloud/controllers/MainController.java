@@ -3,8 +3,8 @@ package com.tmdstudios.projectcloud.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
