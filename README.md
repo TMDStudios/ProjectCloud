@@ -8,4 +8,6 @@ Project Cloud aims to help users generate project ideas for their portfolio and 
 
 Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
 
+Contribution Guide: https://github.com/TMDStudios/ProjectCloud/blob/main/contributing.md
+
 > Note: Project Cloud is currently not deployed
